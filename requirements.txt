@@ -1,0 +1,8 @@
+opendatasets
+pandas
+fuzzywuzzy
+python-Levenshtein
+transformers
+torch
+spacy
+rapidfuzz
