@@ -1,9 +1,10 @@
+transformers>=4.0.0
+torch>=1.10.0
+spacy==3.5.0
+en-core-web-sm==3.5.0
 streamlit==1.32.2
 opendatasets
 pandas
 fuzzywuzzy
 python-Levenshtein
-transformers
-torch
-spacy
 rapidfuzz
