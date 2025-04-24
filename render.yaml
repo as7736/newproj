@@ -1,0 +1,14 @@
+# render.yaml
+services:
+  - type: web
+    name: streamlit-app
+    env: python
+    region: oregon  # Choose closest to your users, optional
+    plan: free       # Other options: starter, standard
+    buildCommand: |
+      pip install -r requirements.txt
+      python -m spacy download en_core_web_sm
+    startCommand: streamlit run app.py --server.port $PORT --server.enableCORS false
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10
