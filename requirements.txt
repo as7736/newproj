@@ -1,7 +1,6 @@
 torch # or any version that is compatible with your transformers version
 transformers # adjust to the desired version
-spacy==3.5.0
-streamlit==1.32.2
+spacy
 opendatasets
 pandas
 fuzzywuzzy
