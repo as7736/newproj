@@ -4,4 +4,5 @@ python -m spacy download en_core_web_sm
 pip install huggingface_hub[hf_xet]
 pip install torch --upgrade
 pip uninstall -y transformers
-pip install transformers==4.30.2
+pip install --force-reinstall transformers
+python -c "import transformers; print(dir(transformers))"
