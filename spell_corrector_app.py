@@ -1,14 +1,14 @@
 import streamlit as st
 import pandas as pd
 import torch
-#from transformers import BertTokenizer, BertForMaskedLM
-from transformers.models.bert import BertTokenizer, BertForMaskedLM
-
+from transformers import BertTokenizer, BertForMaskedLM
 import spacy
 from rapidfuzz import fuzz
 import os
 import spacy
-
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
+warnings.filterwarnings("ignore", message="Tried to instantiate class '__path__._path'")
 
 
 
@@ -19,8 +19,15 @@ nlp = spacy.load("en_core_web_sm")
 # ===================== Load Models & Dataset =====================
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 nlp = spacy.load("en_core_web_sm")
-tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
-model = BertForMaskedLM.from_pretrained("bert-base-uncased").to(device)
+
+from transformers import AutoTokenizer, AutoModelForMaskedLM
+
+# Load model and tokenizer
+tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
+model = AutoModelForMaskedLM.from_pretrained("bert-base-uncased")
+
+#tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
+#model = BertForMaskedLM.from_pretrained("bert-base-uncased").to(device)
 model.eval()
 
 # Load your CSV files
@@ -78,7 +85,8 @@ st.set_page_config(page_title="Keyword Spell Correction", layout="centered")
 st.markdown("## 🔍 Keywords")
 st.markdown("Type your keyword below. Press Enter to get the corrected version.")
 
-query = st.text_input("")
+query = st.text_input("Enter your keyword", label_visibility="collapsed")
+
 
 if query:
     corrected = enhanced_correction_with_suggestions(query, product_expansions)
