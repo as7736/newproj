@@ -1,7 +1,9 @@
 import streamlit as st
 import pandas as pd
 import torch
-from transformers import BertTokenizer, BertForMaskedLM
+#from transformers import BertTokenizer, BertForMaskedLM
+from transformers.models.bert import BertTokenizer, BertForMaskedLM
+
 import spacy
 from rapidfuzz import fuzz
 import os
