@@ -6,11 +6,7 @@ import spacy
 from rapidfuzz import fuzz
 import os
 import spacy
-import warnings
 
-# Suppress specific FutureWarnings
-warnings.filterwarnings("ignore", category=FutureWarning, module="transformers")
-warnings.filterwarnings("ignore", category=FutureWarning, module="huggingface_hub")
 
 
 
