@@ -72,7 +72,7 @@ def enhanced_correction_with_suggestions(text, product_expansions):
         if token in product_expansions:
             corrected_tokens.append(token)
         else:
-            suggestions = [term for term in product_expansions if fuzz.ratio(token, term) > 75]
+            suggestions = [term for term in product_expansions if fuzz.ratio(token, term) > 50]
             if suggestions:
                 corrected_tokens.append(suggestions[0])
             else:
